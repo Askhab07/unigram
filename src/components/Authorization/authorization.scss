@@ -1,0 +1,47 @@
+.authorization {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 55px;
+}
+
+.form__input {
+    display: flex;
+    flex-direction: column;
+    input {
+        width: 720px;
+        height: 133px;
+        background: #f5f5f5;
+        border: 1px solid #6a6a6a;
+        border-radius: 24px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        display: flex;
+        align-items: center;
+        color: #6a6a6a;
+        padding: 39px 35px;
+        margin-bottom: 32px;
+    }
+
+    button {
+        text-align: center;
+        background: #79a7ff;
+        border: 1px solid #6a6a6a;
+        border-radius: 24px;
+        width: 720px;
+        height: 100px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 49px;
+        color: #ffffff;
+        cursor: pointer;
+    }
+}
