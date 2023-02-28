@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../../assets/instagram.svg";
-import "./authorization.scss"
-import {authorization} from "../../store/reducers/instaAction"
+import "./authorization.scss";
+import { authorization } from "../../store/reducers/userAction";
 import { useAppDispatch } from "../../hooks/hooks";
 
 const Authorization = () => {
@@ -13,6 +13,8 @@ const Authorization = () => {
 
   const signIn = () => {
     dispatch(authorization({username, password}))
+    setUsername('');
+    setPassword('');
   }
 
   return (

@@ -1,0 +1,128 @@
+.aside {
+    width: 300px;
+    .aside__header {
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .aside__header-profile {
+            display: flex;
+            align-items: center;
+            .aside__profile-avatar {
+                max-width: 56px;
+                height: 56px;
+                border-radius: 100%;
+                object-fit: cover;
+                margin-right: 12px;
+            }
+            .nickname {
+                h3 {
+                    font-family: "Roboto";
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #000000;
+                }
+                p {
+                    font-family: "Roboto";
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #8e8e8e;
+                }
+            }
+        }
+    }
+    button {
+        border: 0;
+        background: 0;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        color: #0095f6;
+    }
+    .aside__liner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        p {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            color: #8e8e8e;
+        }
+        button {
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            color: #262626;
+        }
+    }
+    .aside__followers {
+        .aside__followers-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            .followers__block {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 12px;
+                    object-fit: cover;
+                    border-radius: 100%;
+                }
+
+                .followers__nickname {
+                    font-family: "Roboto";
+
+                    h3 {
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: #000000;
+                    }
+
+                    p {
+                        font-family: "Roboto";
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 18px;
+                        color: #8e8e8e;
+                    }
+                }
+            }
+        }
+    }
+
+    .aside__footer {
+        p {
+            margin-top: 32px;
+            font-family: "Roboto";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            color: #8e8e8e;
+            margin-bottom: 18px;
+        }
+        #aside__footer-p:last-child {
+            margin-top: 0;
+        }
+    }
+}
