@@ -1,6 +1,5 @@
 .header {
     background: #fff;
-    
     .header__block {
         width: 935px;
         height: 60px;
@@ -53,6 +52,9 @@
                     height: 24px;
                     border-radius: 100%;
                     object-fit: cover;
+                }
+                .header__addpost {
+                    cursor: pointer;
                 }
             }
         }

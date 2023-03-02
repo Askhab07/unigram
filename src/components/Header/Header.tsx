@@ -6,9 +6,12 @@ import trends from '../../assets/trends.svg';
 import logo from '../../assets/instagram.svg';
 import './header.scss';
 import { useAppSelector } from '../../hooks/hooks';
+import { useState } from 'react';
+import Modal from './Modalwindow/Modal';
 
 const Header = () => {
-    const { posts } = useAppSelector(state => state.posts)
+    const { posts } = useAppSelector(state => state.posts);
+    const [modalActive, setModalActive] = useState(false);
 
     return (
         <header className='header'>
@@ -21,12 +24,13 @@ const Header = () => {
             <ul>
                 <li><img src={homeActive} alt="" /></li>
                 <li><img src={msg} alt="" /></li>
-                <li><img src={add} alt="" /></li>
+                <li><img className='header__addpost' src={add} alt="" onClick={() => setModalActive(true)} /></li>
                 <li><img src={trends} alt="" /></li>
                 <li><img src={likes} alt="" /></li>
                 <li><img className='header__avatar' src={posts[0]?.user.avatar} alt="" /></li>
             </ul>
             </div>
+            <Modal active={modalActive} setActive={setModalActive}/>
         </header>
     );
 };

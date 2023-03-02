@@ -1,22 +1,34 @@
 import "./App.scss";
 import Authorization from "./Pages/Authorization/Authorization";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import HomePage from "./Pages/Home/HomePage";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { useEffect } from "react";
 import { setTokenBaseService } from "./api/api";
 import { validationToken } from "./store/reducers/userAction";
-import { getPosts } from "./store/reducers/postAction";
 
 function App() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
 
   const { isLoading, isAuth } = useAppSelector((state) => state.user);
 
+  console.log(isAuth);
+  
+
+  const handleAuth = async () => {
+    try {
+      setTokenBaseService();
+      await dispatch(validationToken()).unwrap();
+      navigate('/')
+    } catch {
+        console.log('error');
+        navigate('/authorization')
+    }
+  }
+
   useEffect(() => {
-    setTokenBaseService();
-    dispatch(validationToken());
-    dispatch(getPosts());
+    handleAuth()
   }, []);
 
   if (isLoading) {

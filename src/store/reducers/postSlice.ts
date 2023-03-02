@@ -8,7 +8,7 @@ const initialState: InitPostState = {
 };
 
 export const postSlice = createSlice({
-  name: "authorization",
+  name: "posts",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -22,16 +22,15 @@ export const postSlice = createSlice({
         state.isLoading = false;
       });
 
-      builder.addCase(getPosts.pending, (state) => {
+      builder.addCase(deletePosts.pending, (state) => {
         state.isLoading = true;
       });
-      // builder.addCase(
-      //   deletePosts.fulfilled,
-      //   (state, action: PayloadAction<IPost[]>) => {
-      //     state.isLoading = false;
-      //     state.posts = state.posts.filter(post => post._id !== action.payload);
-      //   });
-  },
+      
+      builder.addCase(deletePosts.fulfilled, (state, action: PayloadAction<string>) => {
+          state.isLoading = false;
+          state.posts = state.posts.filter(post => post._id !== action.payload);
+        });
+  }
 });
 
 export default postSlice.reducer

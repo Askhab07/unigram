@@ -1,5 +1,4 @@
 import "./aside.scss";
-import profile from "../../assets/profile.svg";
 import { useAppSelector } from "../../hooks/hooks";
 
 const Aside = () => {
@@ -14,7 +13,7 @@ const Aside = () => {
             alt=""
           />
           <div className="nickname">
-            <h3>{posts[0].user.username}</h3>
+          <h3>Скоро</h3>
             <p>{posts[0]?.description}</p>
           </div>
         </div>

@@ -1,9 +1,9 @@
-import Menu from "../../components/Header/Header";
+import Header from "../../components/Header/Header";
 import "./homepage.scss";
 import Content from "../../components/Content/Content";
 import Aside from "../../components/Aside/Aside";
-import { Navigate } from "react-router";
 import { useAppSelector } from "../../hooks/hooks";
+import Modal from "../../components/Header/Modalwindow/Modal";
 
 const HomePage = () => {
 
@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <Menu />
+      <Header />
       <div className="home__parrent">
       <div className="home__content">
        { <Content />}

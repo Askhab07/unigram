@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
 import { InitUserState, IUser } from "../../types/IUser";
 import { authorization, validationToken } from "./userAction";
 
@@ -8,17 +7,26 @@ const initialState: InitUserState = {
   user: {
     username: "",
     avatar: "",
-    _id: "",
-    token: Cookies.get("token") || "",
+    _id: ""
   },
   isLoading: false,
   isAuth: false
 };
 
 export const userSlice = createSlice({
-  name: "authorization",
+  name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutReducer: (state) => {
+      state.isAuth = false
+      state.isLoading = false
+      state.user = {
+        username: "",
+        avatar: "",
+        _id: ""
+      }
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(authorization.pending, (state) => {
       state.isLoading = true;
@@ -33,15 +41,17 @@ export const userSlice = createSlice({
     builder.addCase(validationToken.pending, (state) => {
       state.isLoading = true;
     })
-    builder.addCase(validationToken.fulfilled, (state, action: PayloadAction<Omit<IUser,"token">>) => {
+    builder.addCase(validationToken.fulfilled, (state, action: PayloadAction<IUser>) => {
       state.isAuth = true;
-      state.user = {...action.payload, token: state.user.token};
+      state.user = action.payload;
       state.isLoading = false;
     })
-    builder.addCase(validationToken.rejected, (state) => {
-      state.isLoading = false;
-    })
+    // builder.addCase(validationToken.rejected, (state) => {
+    //   state.isLoading = false;
+    // })
   },
 });
 
 export default userSlice.reducer;
+
+// export const {logoutReducer} = userSlice.actions;

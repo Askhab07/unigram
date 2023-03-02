@@ -3,6 +3,7 @@ import logo from "../../assets/instagram.svg";
 import "./authorization.scss";
 import { authorization } from "../../store/reducers/userAction";
 import { useAppDispatch } from "../../hooks/hooks";
+import { useNavigate } from "react-router";
 
 const Authorization = () => {
 
@@ -10,11 +11,17 @@ const Authorization = () => {
   const [password, setPassword] = useState<string>("")
 
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const signIn = () => {
-    dispatch(authorization({username, password}))
-    setUsername('');
-    setPassword('');
+  const signIn = async () => {
+    try {
+      await dispatch(authorization({username, password})).unwrap()
+      setUsername('');
+      setPassword('');
+      navigate('/')
+    } catch {
+      console.log('error');
+    }
   }
 
   return (

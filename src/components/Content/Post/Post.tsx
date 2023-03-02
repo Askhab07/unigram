@@ -4,10 +4,9 @@ import comments from "../../../assets/comments.svg";
 import share from "../../../assets/share.svg";
 import save from "../../../assets/save.svg";
 import emojis from "../../../assets/emojis.svg";
-
 import './post.scss';
-
-import { useAppSelector } from "../../../hooks/hooks";
+import { deletePosts } from "../../../store/reducers/postAction";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { IPost } from "../../../types/IPost";
 import { useState } from "react";
 
@@ -16,15 +15,16 @@ const Post: React.FC<{post: IPost}> = ({post}) => {
   const [isTextMore, setIsTextMore] = useState(false);
   const [isOption, setIsOption] = useState(false);
   const { isLoading } = useAppSelector((state) => state.posts);
-  
-  if (isLoading) {
-    return <h1>Loading...</h1>;
+  const dispatch = useAppDispatch()
+
+  const handleDelete = () => {
+    dispatch(deletePosts(post._id))
   }
 
   return (
     <div className="post">
       <div className="post__header">
-        <div className="post__header-right">
+        <div className="post__header-right" >
           <img className="post__profile" src={post.user.avatar} alt="" />
           <h2>{post.user.username}</h2>
         </div>
@@ -35,7 +35,7 @@ const Post: React.FC<{post: IPost}> = ({post}) => {
           <img className="options" onClick={() => setIsOption(false)} src={options} alt="" />
         <div className="option__button">
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
         </div>
         }
